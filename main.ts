@@ -28,25 +28,25 @@ let toDoList: ToDo[] = [
 ];
 
 createToDoList();
+setCaret();
 
 window.addEventListener('load', () => {
-  toDoList = JSON.parse(localStorage.getItem('to-do') as string).map((task: { task: any; completed: any }) => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+  toDoList = JSON.parse(localStorage.getItem('to-do') as string).map((task: { task: string; completed: boolean }) => {
     return new ToDo(task.task, task.completed);
   });
 
   createToDoList();
 });
 
-window.onload = setCaret();
-
-function setCaret(): any {
+function setCaret(): void {
   userInput.select();
   userInput.setSelectionRange(userInput.value.length, userInput.value.length);
 }
 
 console.log(toDoList);
 
-function addTodo() {
+function addTodo(): void {
   const newToDo = new ToDo(userInput.value, false);
   toDoList.push(newToDo);
   console.log(toDoList);
@@ -61,13 +61,13 @@ userInput.addEventListener('keypress', e => {
   }
 });
 
-function createToDoList() {
+function createToDoList(): void {
   list.innerHTML = '';
   for (let i = 0; i < toDoList.length; i++) {
     const itemContainer = document.createElement('span');
     const task = document.createElement('li');
     const checkbox = document.createElement('input');
-    let deleteButton = document.createElement('button');
+    const deleteButton = document.createElement('button');
 
     list.classList.add('list');
     itemContainer.classList.add('list__item__container');
@@ -80,7 +80,7 @@ function createToDoList() {
     checkbox.type = 'checkbox';
     checkbox.checked = toDoList[i].completed;
     checkbox.addEventListener('click', () => {
-      if (checkbox.checked === true) {
+      if (checkbox.checked) {
         toDoList[i].completed = true;
         task.classList.add('list__item--completed');
       } else {
@@ -104,7 +104,7 @@ function createToDoList() {
   }
 }
 
-function sortAlphabetical() {
+function sortAlphabetical(): void {
   toDoList.sort((a, b) => {
     const taskA = a.task.toUpperCase();
     const taskB = b.task.toUpperCase();
