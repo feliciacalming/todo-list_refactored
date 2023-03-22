@@ -1,1 +1,26 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](https://classroom.github.com/online_ide?assignment_repo_id=10572557&assignment_repo_type=AssignmentRepo)
+# Inlämningsuppgift 2
+
+## Commit message convention
+
+I'm using the following commit message convention:
+
+#### Format of the commit message:
+
+```txt
+(<type>): subject
+
+Example message:
+(docs): update README
+
+For the <subject> I will use imperative, present tense (eg: use "add" instead of "added" or "adds")
+```
+
+### <type> values
+
+- **build**: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
+- **docs**: Documentation only changes
+- **feat**: A new feature
+- **fix**: A bug fix
+- **perf**: A code change that improves performance
+- **refactor**: A code change that neither fixes a bug nor adds a feature
+- **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
