@@ -1,0 +1,192 @@
+@use "mixins" as mix;
+@use "variables" as var;
+
+@font-face {
+  font-family: "Vintage Round";
+  src: url(/src/assets/VintageRoundPersonalUse-0W1Z4.otf);
+}
+
+html,
+body,
+ul,
+h1 {
+  margin: 0;
+  padding: 0;
+  font-family: "Garamond", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  background-color: rgb(240, 241, 248);
+}
+
+body {
+  @include mix.flexCenter;
+}
+
+.startpage-container {
+  @include mix.flexCenter;
+  flex-direction: column;
+  height: 100vh;
+
+  @include mix.desktop {
+    width: 50vw;
+  }
+}
+
+.input {
+  @include mix.flexCenter;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 80vw;
+  margin-bottom: 5%;
+
+  @include mix.desktop {
+    width: 30vw;
+  }
+
+  &__text {
+    width: 80%;
+    height: 10vw;
+    // margin-bottom: 10px;
+    border: 1px solid var.$font-primary;
+    border-radius: 5px;
+    padding-left: 10px;
+    text-align: center;
+
+    &:focus {
+      outline: none;
+    }
+
+    @include mix.desktop {
+      width: 40vw;
+      height: 30px;
+    }
+  }
+
+  &__button {
+    @include mix.flexCenter;
+    background-color: var.$font-primary;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+
+    @include mix.desktop {
+      margin-left: 10px;
+      width: 35px;
+      height: 30px;
+    }
+  }
+}
+
+.list-container {
+  width: 90vw;
+  height: min-content;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+
+  @include mix.desktop {
+    width: 40vw;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  margin: 2px;
+
+  &__item {
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 5px;
+    margin-bottom: 5px;
+    list-style: none;
+    // background-color: var.$font-secondary;
+    background-image: linear-gradient(
+      45deg,
+      rgba(203, 203, 255, 05),
+      rgba(171, 171, 250, 0.6),
+      rgba(143, 124, 236, 0.8)
+    );
+    border: 1px solid rgb(164, 164, 250);
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: blue;
+    // text-shadow: 1px 2px 0 #fff, 0px 1px #fff, 1px 2px #fff, 2px 1px #fff;
+
+    &--completed {
+      text-decoration: line-through;
+      color: rgba(169, 161, 210, 0.8);
+    }
+
+    @include mix.desktop {
+      font-size: 17px;
+    }
+  }
+
+  &__checkbox {
+    width: 15px;
+    height: 15px;
+    margin-right: 3%;
+    padding: 0;
+    // margin-right: 30px;
+
+    @include mix.desktop {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__deletebutton {
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    border: none;
+    position: absolute;
+    margin-left: 90%;
+    background: transparent;
+
+    @include mix.desktop {
+      margin-left: 93%;
+    }
+  }
+}
+
+h1 {
+  color: var.$font-primary;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  background-color: rgba(164, 164, 250, 0.5);
+  border: none;
+  font-size: 12px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+
+  &:hover {
+    background-color: rgba(0, 0, 255, 0.7);
+    color: white;
+  }
+
+  @include mix.desktop {
+    font-size: 13px;
+  }
+}
+
+#clear-btn {
+  align-self: flex-end;
+  margin-top: 10%;
+}

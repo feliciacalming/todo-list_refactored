@@ -1,0 +1,12 @@
+@mixin desktop {
+    @media screen and (min-width: 768px) {
+        @content;
+            
+    }
+}
+
+@mixin flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
