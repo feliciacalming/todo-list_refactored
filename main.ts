@@ -1,7 +1,8 @@
 import { createToDoList } from './src/ts/createToDoList';
-import { saveToLocalStorage } from './src/ts/helpers/localStorage';
+import { getFromLocalStorage, saveToLocalStorage } from './src/ts/helpers/localStorage';
 import { ToDo } from './src/ts/models/todo';
-let toDoList: ToDo[] = [];
+
+export const toDoList: ToDo[] = [];
 
 const userInput: HTMLInputElement = document.getElementById('user-input') as HTMLInputElement;
 const inputContainer: HTMLDivElement = document.getElementById('input-container') as HTMLDivElement;
@@ -23,15 +24,7 @@ clearButton.addEventListener('click', () => {
 
 createToDoList(toDoList);
 setCaret();
-
-window.addEventListener('load', () => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-  toDoList = JSON.parse(localStorage.getItem('to-do') as string).map((task: { task: string; completed: boolean }) => {
-    return new ToDo(task.task, task.completed);
-  });
-
-  createToDoList(toDoList);
-});
+getFromLocalStorage();
 
 function setCaret(): void {
   userInput.select();
