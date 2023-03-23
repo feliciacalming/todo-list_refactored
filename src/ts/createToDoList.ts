@@ -1,3 +1,4 @@
+import { toDoList } from '../../main';
 import { checkTodo } from './checkTodo';
 import { deleteTodo } from './deleteTodo';
 import type { ToDo } from './models/Todo';
@@ -6,8 +7,9 @@ const list: HTMLUListElement = document.createElement('ul');
 const listContainer: HTMLDivElement = document.getElementById('uncompleted-tasks') as HTMLDivElement;
 listContainer.classList.add('list-container');
 
-export function createToDoList(toDoList: ToDo[]): void {
+export function createToDoList(): void {
   list.innerHTML = '';
+
   for (let i = 0; i < toDoList.length; i++) {
     const itemContainer = document.createElement('span');
     const task = document.createElement('li');
