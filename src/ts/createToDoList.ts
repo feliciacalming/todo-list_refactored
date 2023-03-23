@@ -1,8 +1,10 @@
+import { checkTodo } from './checkTodo';
 import type { ToDo } from './models/Todo';
 
 const list: HTMLUListElement = document.createElement('ul');
 const listContainer: HTMLDivElement = document.getElementById('uncompleted-tasks') as HTMLDivElement;
 listContainer.classList.add('list-container');
+
 export function createToDoList(toDoList: ToDo[]): void {
   list.innerHTML = '';
   for (let i = 0; i < toDoList.length; i++) {
@@ -21,15 +23,9 @@ export function createToDoList(toDoList: ToDo[]): void {
 
     checkbox.type = 'checkbox';
     checkbox.checked = toDoList[i].completed;
+
     checkbox.addEventListener('click', () => {
-      if (checkbox.checked) {
-        toDoList[i].completed = true;
-        task.classList.add('list__item--completed');
-      } else {
-        toDoList[i].completed = false;
-        task.classList.remove('list__item--completed');
-      }
-      localStorage.setItem('to-do', JSON.stringify(toDoList));
+      checkTodo(checkbox, toDoList[i], task, toDoList);
     });
 
     deleteButton.innerHTML = "<i class='bi bi-trash'></i>";
