@@ -1,4 +1,5 @@
 import { checkTodo } from './checkTodo';
+import { deleteTodo } from './deleteTodo';
 import type { ToDo } from './models/Todo';
 
 const list: HTMLUListElement = document.createElement('ul');
@@ -15,24 +16,23 @@ export function createToDoList(toDoList: ToDo[]): void {
 
     list.classList.add('list');
     itemContainer.classList.add('list__item__container');
-    task.classList.add('list__item');
-    checkbox.classList.add('list__checkbox');
-    deleteButton.classList.add('list__deletebutton');
 
+    task.classList.add('list__item');
     task.innerHTML = toDoList[i].task;
 
+    checkbox.classList.add('list__checkbox');
     checkbox.type = 'checkbox';
     checkbox.checked = toDoList[i].completed;
+
+    deleteButton.classList.add('list__deletebutton');
+    deleteButton.innerHTML = "<i class='bi bi-trash'></i>";
 
     checkbox.addEventListener('click', () => {
       checkTodo(checkbox, toDoList[i], task, toDoList);
     });
 
-    deleteButton.innerHTML = "<i class='bi bi-trash'></i>";
     deleteButton.addEventListener('click', () => {
-      toDoList.splice(i, 1);
-      localStorage.setItem('to-do', JSON.stringify(toDoList));
-      createToDoList(toDoList);
+      deleteTodo(toDoList, i);
     });
 
     task.appendChild(checkbox);
