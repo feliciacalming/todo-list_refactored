@@ -1,3 +1,4 @@
+import { saveToLocalStorage } from './helpers/localStorage';
 import type { ToDo } from './models/Todo';
 
 export function checkTodo(checkbox: HTMLInputElement, todo: ToDo, task: HTMLLIElement, toDoList: ToDo[]): void {
@@ -8,5 +9,5 @@ export function checkTodo(checkbox: HTMLInputElement, todo: ToDo, task: HTMLLIEl
     todo.completed = false;
     task.classList.remove('list__item--completed');
   }
-  localStorage.setItem('to-do', JSON.stringify(toDoList));
+  saveToLocalStorage(toDoList);
 }

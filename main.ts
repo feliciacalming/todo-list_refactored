@@ -1,4 +1,5 @@
 import { createToDoList } from './src/ts/createToDoList';
+import { saveToLocalStorage } from './src/ts/helpers/localStorage';
 import { ToDo } from './src/ts/models/todo';
 let toDoList: ToDo[] = [];
 
@@ -17,7 +18,7 @@ sortButton.addEventListener('click', sortAlphabetical);
 clearButton.addEventListener('click', () => {
   localStorage.clear();
   list.innerHTML = '';
-  localStorage.setItem('to-do', JSON.stringify(toDoList));
+  saveToLocalStorage(toDoList);
 });
 
 createToDoList(toDoList);
@@ -42,8 +43,7 @@ console.log(toDoList);
 function addTodo(): void {
   const newToDo = new ToDo(userInput.value, false);
   toDoList.push(newToDo);
-  console.log(toDoList);
-  localStorage.setItem('to-do', JSON.stringify(toDoList));
+  saveToLocalStorage(toDoList);
   userInput.value = '';
   createToDoList(toDoList);
 }
