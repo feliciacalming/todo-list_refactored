@@ -39,6 +39,8 @@ export function createToDoList(): void {
       deleteTodo(toDoList, i);
     });
 
+    checkTodo(checkbox, toDoList[i], task, toDoList);
+
     task.appendChild(checkbox);
     task.appendChild(deleteButton);
     list.appendChild(task);
