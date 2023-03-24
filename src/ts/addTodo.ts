@@ -8,5 +8,4 @@ export function addTodo(inputvalue: string): void {
   toDoList.push(newToDo);
   saveToLocalStorage(toDoList);
   createToDoList();
-  inputvalue = '';
 }
