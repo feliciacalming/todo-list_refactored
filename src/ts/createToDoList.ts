@@ -1,7 +1,6 @@
 import { toDoList } from '../../main';
 import { checkTodo } from './checkTodo';
 import { deleteTodo } from './deleteTodo';
-import type { ToDo } from './models/Todo';
 
 const list: HTMLUListElement = document.createElement('ul');
 const listContainer: HTMLDivElement = document.getElementById('uncompleted-tasks') as HTMLDivElement;
