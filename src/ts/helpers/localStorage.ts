@@ -5,7 +5,12 @@ export function saveToLocalStorage(toDoList: ToDo[]): void {
 }
 
 export function getFromLocalStorage(): ToDo[] {
-  const toDoList = (JSON.parse(localStorage.getItem('to-do') as string) as ToDo[]).map(todo => {
+  if (localStorage.getItem('to-do') === null) {
+    return [];
+  }
+
+  const toDoList = JSON.parse(localStorage.getItem('to-do') as string) as ToDo[];
+  toDoList.map(todo => {
     return new ToDo(todo.task, todo.completed);
   });
 
