@@ -1,10 +1,13 @@
 import { toDoList } from '../../main';
 import { checkTodo } from './checkTodo';
+import { clearTodos } from './clearTodos';
 import { deleteTodo } from './deleteTodo';
+import { sortAlphabetical } from './helpers/sortAlphabetical';
 
 const list: HTMLUListElement = document.createElement('ul');
 const listContainer: HTMLDivElement = document.getElementById('uncompleted-tasks') as HTMLDivElement;
-listContainer.classList.add('list-container');
+const clearButton: HTMLButtonElement = document.getElementById('clear-btn') as HTMLButtonElement;
+const sortButton: HTMLButtonElement = document.getElementById('sort-btn') as HTMLButtonElement;
 
 export function createToDoList(): void {
   list.innerHTML = '';
@@ -41,4 +44,7 @@ export function createToDoList(): void {
     list.appendChild(task);
     listContainer.append(list);
   }
+
+  sortButton.addEventListener('click', sortAlphabetical);
+  clearButton.addEventListener('click', clearTodos);
 }
