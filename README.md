@@ -2,6 +2,9 @@
 
 This is a refactored version of the first assignment in the course 'Introduction to Javascript'. The application uses local storage to store the users to-do list. You can add new tasks, mark them as done and remove them from the list, or clear the whole list and start over. If, for some reason, you would want to sort your to-do's in alphabetical order, that's also possible :)
 
+<img width="340" alt="Skärmavbild 2023-05-25 kl  15 59 03" src="https://github.com/feliciacalming/todo-list_refactored/assets/113439720/e1bde75c-7a24-4ac2-a2fd-c1450e62f5a9">
+
+
 # Installation 
 
 1. Clone repository
